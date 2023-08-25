@@ -6,10 +6,15 @@ import numpy as np
 import nltk
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
-from train import train
+
+from pathlib import Path
+
+from .train import train
+
+parent_dir  = Path(__file__).parent
 
 def lector():
-    with open('data.json', encoding='utf-8') as file:
+    with open(parent_dir / 'data.json', encoding='utf-8') as file:
         intents = json.load(file)
     return intents
 
@@ -28,7 +33,7 @@ class Chatbot:
         nltk.download('wordnet', quiet=True)
         self.lemmatizer = WordNetLemmatizer()
         self.retroalimentacion_status = False
-        self.model = load_model('chat.h5')
+        self.model = load_model(parent_dir / 'chat.h5')
         print("Encendido.")
 
     def clean_up_sentence(self, sentence):
@@ -46,8 +51,8 @@ class Chatbot:
         return np.array(bag)
 
     def predict_class(self, sentence):
-        classes = pickle.load(open('classes.pkl', 'rb'))
-        words = pickle.load(open('words.pkl', 'rb'))
+        classes = pickle.load(open(parent_dir / 'classes.pkl', 'rb'))
+        words = pickle.load(open(parent_dir / 'words.pkl', 'rb'))
         msg = ''.join((c for c in unicodedata.normalize('NFD', sentence) if unicodedata.category(c) != 'Mn'))
         bow = self.bag_of_word(msg.lower(), words)
         res = self.model.predict(np.array([bow]))[0]
@@ -65,7 +70,7 @@ class Chatbot:
         dicts = {'tag': text, 'patterns': [text], 'responses': responses}
         datas.append(dicts)
         dicts = {"intents": datas, "error": intents['error']}
-        with open('data.json','w' ,encoding='utf-8') as file:
+        with open(parent_dir / 'data.json','w' ,encoding='utf-8') as file:
             json.dump(dicts,file, indent=4)
             file.close()
         self.retroalimentacion_status = True

@@ -8,11 +8,15 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 
+from pathlib import Path
+
+parent_dir  = Path(__file__).parent
+
 def train():
     nltk.download('punkt', quiet=True)
     nltk.download('wordnet', quiet=True)
     lemmatizer = WordNetLemmatizer()
-    with open('data.json', encoding='utf-8') as file:
+    with open(parent_dir / 'data.json', encoding='utf-8') as file:
         intents = json.load(file)
     words = []
     classes = []
@@ -28,8 +32,8 @@ def train():
     words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
     words = sorted(set(words))
     classes = sorted(set(classes))
-    pickle.dump(words, open('words.pkl', 'wb'))
-    pickle.dump(classes, open('classes.pkl', 'wb'))
+    pickle.dump(words, open(parent_dir / 'words.pkl', 'wb'))
+    pickle.dump(classes, open(parent_dir / 'classes.pkl', 'wb'))
     training = []
     output_empty = [0] * len(classes)
     for document in documents:
@@ -54,7 +58,7 @@ def train():
     optimizer = Adam(learning_rate=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=8, verbose=1)
-    model.save('chat.h5')
+    model.save(parent_dir / 'chat.h5')
 
 if __name__ == "__main__":
     train()

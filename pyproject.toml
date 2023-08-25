@@ -4,7 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["jedel1043 <jedel0124@gmail.com>"]
 readme = "README.md"
-packages = [{include = "rodadora_chatbot"}]
+packages = [
+    { include = "gui", from = "src" },
+    { include = "chatbot", from = "src" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9, <3.12"

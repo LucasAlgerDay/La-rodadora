@@ -12,7 +12,7 @@ try:
     from kivymd.app import MDApp
     from kivymd.uix.card import MDCard
     from kivymd.uix.widget import MDWidget
-    import sounddevice as sd
+    from kivymd.uix.button import MDIconButton
     import speech_recognition as sr
     import components
     from queue import Queue
@@ -35,12 +35,16 @@ question = ""
 responses = []
 
 class Chat(MDWidget):
+    volume = 1
+    mute = False
     messages = ListProperty([])
 
-
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         super().__init__()
         self.requests = Queue()
+        self.tts = pyttsx3.init()
+        self.tts.setProperty("rate", 150)
+        self.volume = self.tts.getProperty("volume")
 
         def chatter():
 
@@ -119,17 +123,16 @@ class Chat(MDWidget):
             recognizer = sr.Recognizer()
             microphone = sr.Microphone()
             with microphone as source:
-                recognizer.adjust_for_ambient_noise(source, duration=1) 
+                recognizer.adjust_for_ambient_noise(source, duration=0.5)
             self.receive("Puedes hablar...")
             with microphone as source:
                 audio = recognizer.listen(source, timeout=15)
             try:
                 text = recognizer.recognize_google(audio, language="es")
                 response = chat_bot.chat(text)
-                engine = pyttsx3.init()
-                engine.setProperty('rate', 150)
-                engine.say(response)
-                engine.runAndWait()
+                self.receive(response)
+                self.tts.say(response)
+                self.tts.runAndWait()
                 self.receive("Espero que mi respuesta te sea de mucha ayuda")
             except sr.RequestError as e:
                 self.receive(f"Error en la solicitud a la API de Google Speech Recognition: {e}")
@@ -139,6 +142,14 @@ class Chat(MDWidget):
                 self.receive(f"Error durante la grabación o transcripción: {str(e)}")
         recording_thread = Thread(target=record_and_transcribe)
         recording_thread.start()
+
+    def toggle_mute(self, button: MDIconButton):
+        self.mute = not self.mute
+        if self.mute:
+            button.text_color = MDApp.get_running_app().theme_cls.accent_color
+        else:
+            button.text_color = MDApp.get_running_app().theme_cls.icon_color
+        self.tts.setProperty("volume", int(self.mute) * self.volume)
 
 
 class ChatApp(MDApp):

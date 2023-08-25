@@ -7,8 +7,8 @@
 
 
         MDTopAppBar:
-            left_action_items: [["menu"]]
-            right_action_items: [["volume-mute"]]
+            left_action_items: [["menu", lambda x: x, "", "", app.theme_cls.icon_color]]
+            right_action_items: [["volume-mute", lambda x: app.chat.toggle_mute(x), "Silenciar", "", app.theme_cls.icon_color]]
             elevation: 1
 
         MDRelativeLayout:
@@ -24,9 +24,12 @@
                     size_hint: 0.4, 1
 
                     Image:
-                        source: "assets/raccoon/character-art/raccoon.png"
+                        source: "assets/raccoon/character-art/run.gif"
                         size_hint: None, None
                         size: self.parent.width, self.parent.width/self.image_ratio
+                        anim_delay:0.08
+                        mipmap: True
+                        keep_data: True
 
                 PBoxLayout:
                     orientation: "vertical"
@@ -65,10 +68,13 @@
                             md_bg_color: app.theme_cls.accent_color
                             icon_color: app.theme_cls.icon_color
 
-                        MDTextField:
+                        EnterTextField:
                             id: input
                             multiline: True
                             max_height: dp(75)
+                            on_text_validate:
+                                root.send(self.text.strip())
+                                self.text = ''
                             hint_text: "Escribe una pregunta..."
                             fill_color_normal: 1,1,1,1
                             text_color_normal: app.theme_cls.text_color
@@ -77,7 +83,9 @@
                             radius: [10, 10, 10, 10]
 
                         MDIconButton:
-                            on_release: root.send(input.text.strip())
+                            on_release:
+                                root.send(input.text.strip())
+                                input.text = ''
                             icon: "send"
                             md_bg_color: app.theme_cls.primary_dark
                             icon_color: app.theme_cls.opposite_icon_color

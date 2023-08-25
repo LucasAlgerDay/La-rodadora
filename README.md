@@ -17,5 +17,5 @@ Proyecto de chatbot para mueso La Rodadora.
 
 ```bash
 poetry install
-poetry run python rodadora_main.py
+poetry run python src/gui/main.py
 ```
