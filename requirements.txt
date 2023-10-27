@@ -8,3 +8,4 @@ nltk
 pyttsx3
 speechrecognition
 pyaudio
+langdetect

@@ -1,0 +1,368 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hello",
+                "Hi!",
+                "Hey",
+                "Good morning!",
+                "Greetings",
+                "Hello, how are you?",
+                "Hello! What can I help you with?",
+                "Hey! Need anything?",
+                "Hello! I hope you're having a good day.",
+                "ruby"
+            ],
+            "responses": [
+                "Hello, I'm an AI trained to answer your questions. Tell me how I can assist you.",
+                "Hi! Welcome, I'm here to help with anything you need.",
+                "Hey, how can I assist you today?",
+                "Good morning! If you have any questions or need information, I'm here to help.",
+                "Greetings. I'm here to provide information and answers.",
+                "Hello, how are you? I'm ready to answer your queries.",
+                "Hello, what can I assist you with today?",
+                "Hey! How can I help you right now?",
+                "Hello! I hope you're having a good day. I'm here to help with anything you need."
+            ]
+        },
+        {
+            "tag": "farewell",
+            "patterns": [
+                "Goodbye",
+                "Goodbye!",
+                "See you later",
+                "Goodbye for now",
+                "Bye",
+                "Until next time",
+                "Goodbye, have a great day",
+                "Take care",
+                "Bye! It was a pleasure helping you"
+            ],
+            "responses": [
+                "Goodbye, it was a pleasure assisting you.",
+                "See you later! If you need more help in the future, I'll be here.",
+                "Goodbye. I hope you found what you were looking for.",
+                "Bye. I'll always be here if you have more questions.",
+                "Until next time. Don't hesitate to return if you need more information.",
+                "Goodbye for now. It's always a pleasure to assist you.",
+                "Goodbye, have a good day. I'm always available if you have more questions.",
+                "Take care and see you next time.",
+                "Bye! It was a pleasure helping you. I'm always here to address your concerns.",
+                "Have a great day. If you need anything else, feel free to ask."
+            ]
+        },
+        {
+            "tag": "name",
+            "patterns": [
+                "What's your name?",
+                "What do you call yourself?",
+                "Tell me your name",
+                "Name",
+                "Can you tell me your name?"
+            ],
+            "responses": [
+                "My name is Ruby, how can I assist you?",
+                "I'm called Ruby, I'm here to answer your questions.",
+                "I'm Ruby, an AI designed to assist you with information and answers.",
+                "You can call me Ruby. How can I help you today?",
+                "My name is Ruby. Is there something specific you need help with?"
+            ]
+        },
+        {
+            "tag": "sustainability",
+            "patterns": [
+                "What is sustainability?"
+            ],
+            "responses": [
+                "Is the development that meets our needs without compromising resources and opportunities for the growth of future generations."
+            ]
+        },
+        {
+            "tag": "sustainable_vs_sustainability",
+            "patterns": [
+                "What is the difference between sustainable and sustainability?",
+                "What is the difference between sustainability and sustainability?"
+            ],
+            "responses": [
+                "Both aim to preserve the resources of our planet, but the main difference between sustainability and sustainability is that the former focuses on these resources and their use, while the latter takes into account a wide range of processes that seek environmental, social, economic, political, and cultural change."
+            ]
+        },
+        {
+            "tag": "renewable_energy",
+            "patterns": [
+                "What are renewable energies?",
+                "What is renewable energy?"
+            ],
+            "responses": [
+                "Energy acquired from inexhaustible natural sources, both for the immense amount of energy they contain and for their capacity to regenerate themselves through natural processes.  These energy sources are based on the use of the sun, wind, water, among others. For example, wind generates energy, which can be converted into mechanical or electrical energy."
+            ]
+        },
+        {
+            "tag": "types_of_renewable_energy",
+            "patterns": [
+                "What are the types of renewable energies?",
+                "How many renewable energies are there?",
+                "Which are renewable energies?"
+            ],
+            "responses": [
+                "Renewable energies include wind, geothermal, hydroelectric, tidal, solar, wave, biomass, and biofuels."
+            ]
+        },
+        {
+            "tag": "recycling",
+            "patterns": [
+                "What is recycling?",
+                "What does recycling involve?"
+            ],
+            "responses": [
+                "Recycling is the process of converting used or waste materials into new products. It consists of collecting, sorting, and processing recyclable materials to prevent them from ending up in landfills, thus contributing to reducing the demand for natural resources and reducing pollution."
+            ]
+        },
+        {
+            "tag": "materials_for_recycling",
+            "patterns": [
+                "What materials can we recycle?",
+                "Which materials can be recycled?",
+                "Recyclable materials"
+            ],
+            "responses": [
+                "Some viable materials for recycling would be corrugated paper boxes, newspapers, steel cans, grass clippings, aluminum cans, plastic bottles, magazines, glass containers, among others."
+            ]
+        },
+        {
+            "tag": "unsafe_materials_for_trash",
+            "patterns": [
+                "What materials are unsafe to throw in the trash?",
+                "What materials should not be thrown in the trash?",
+                "Materials that should not be thrown in the trash"
+            ],
+            "responses": [
+                "Some products are called 'household hazardous waste,' and they must be disposed of properly, or they could harm both human health and the environment. These include paints, oils, batteries, pesticides, and more."
+            ]
+        },
+        {
+            "tag": "why_separate_trash",
+            "patterns": [
+                "Why do we separate trash?",
+                "Why should we separate trash?",
+                "Why should I separate trash?",
+                "Why do we separate waste?"
+            ],
+            "responses": [
+                "We separate waste because most of the waste is recyclable and reusable, thus optimizing its use."
+            ]
+        },
+        {
+            "tag": "how_to_separate_trash",
+            "patterns": [
+                "How can we separate trash?",
+                "How do I separate trash?",
+                "What materials are not safe to put in the trash?"
+            ],
+            "responses": [
+                "Some products are called 'household hazardous waste', which must be disposed of properly, otherwise they may cause damage to health and the environment, including paints, oils, batteries, pesticides, etc."
+            ]
+        },
+        {
+            "tag": "organic_vs_inorganic_waste",
+            "patterns": [
+                "What are organic and inorganic wastes?",
+                "What is organic and inorganic waste?",
+                "What is organic waste?",
+                "What is inorganic waste?",
+                "What is organic and inorganic waste?"
+            ],
+            "responses": [
+                "Organic waste is defined as waste that was previously alive or part of an organism, e.g., wood, eggshells, fruit, and vegetable waste, while inorganic waste refers to waste that lacks a biological origin, e.g., glass, metal, and plastic."
+            ]
+        },
+        {
+            "tag": "subclassification_of_trash",
+            "patterns": [
+                "How can we subclassify trash?",
+                "How do I classify trash?",
+                "How do I subclassify trash?",
+                "How can we dispose of our garbage?",
+                "How can we subclassify waste?"
+            ],
+            "responses": [
+                "There are specific classifications of wastes according to their composition, some of them are: cloth, wood, paper, plastic, metal, glass, etc."
+            ]
+        },
+        {
+            "tag": "How can we dispose of our garbage",
+            "patterns": [
+                "How can we dispose of our garbage?"
+            ],
+            "responses": [
+                "There are several methods for sorting garbage, but the simplest and most approved is the separation of organic and inorganic."
+            ]
+        },
+        {
+            "tag": "bioconstruction",
+            "patterns": [
+                "What is bioconstruction?"
+            ],
+            "responses": [
+                "Bioconstruction is defined as an approach to construction that respects both living things and the environment. It is a type of sustainable architecture designed to achieve a harmonious integration between the building and its surroundings, while minimizing any negative impact on the environment."
+            ]
+        },
+        {
+            "tag": "basic_elements_of_bioconstruction",
+            "patterns": [
+                "What are the basic elements of bioconstruction?",
+                "What are the essential elements of bioconstruction?",
+                "What do I need for bioconstruction?"
+            ],
+            "responses": [
+                "Some fundamental elements to consider include integration into the environment, use of healthy and biocompatible materials, optimization of natural resources, energy efficiency, use of low-impact equipment and furnishings, proper waste management, and appropriate design and layout, among other key factors."
+            ]
+        },
+        {
+            "tag": "sustainable_house",
+            "patterns": [
+                "What is a sustainable house?"
+            ],
+            "responses": [
+                "It is a house that seeks to maximize the use of natural resources so that the construction minimizes the impact on both the environment and its inhabitants."
+            ]
+        },
+        {
+            "tag": "basic_elements_of_sustainable_house",
+            "patterns": [
+                "What are the basic elements of a sustainable house?",
+                "Essential elements of a sustainable house",
+                "What is needed for a sustainable house?"
+            ],
+            "responses": [
+                "Sustainable design and construction materials, efficient green areas appropriate to the location, natural and LED lighting, good ventilation, water control systems and energy reducers, low-impact furniture, use of natural resources through different facilities, such as photovoltaic cells, solar water heater, wind turbines, among others."
+            ]
+        },
+        {
+            "tag": "PET_bottles",
+            "patterns": [
+                "What are PET bottles?",
+                "What is a PET bottle?",
+                "What is PET?"
+            ],
+            "responses": [
+                "PET, which stands for polyethylene terephthalate, is a strong, flexible and 100% recyclable plastic used to package liquids such as water, soft drinks, and cleaning products."
+            ]
+        },
+        {
+            "tag": "bottle_house",
+            "patterns": [
+                "What is the purpose of building a house with bottles?",
+                "Why build a house with bottles?",
+                "What's the point of a bottle house?"
+            ],
+            "responses": [
+                "Also known as eco-construction with bottles, this practice gives us the opportunity to take advantage of plastic waste and reduce the amount of construction materials harmful to the environment."
+            ]
+        },
+        {
+            "tag": "reduce_energy_consumption",
+            "patterns": [
+                "How can we reduce energy consumption in the house?",
+                "How to reduce energy consumption at home?",
+                "How can I reduce my home's energy consumption?"
+            ],
+            "responses": [
+                "You can use energy-saving light bulbs, turn off electronic devices when not in use, improve the insulation of the house, use efficient appliances, take advantage of natural light and use renewable energies."
+            ]
+        },
+        {
+            "tag": "reduce_water_consumption",
+            "patterns": [
+                "How can we reduce water consumption in the house?",
+                "How to reduce water consumption at home?",
+                "How can I reduce my home's water consumption?"
+            ],
+            "responses": [
+                "Use water-saving devices on faucets and showerheads.",
+                "Collect rainwater for irrigation.",
+                "Avoid leaving faucets running.",
+                "Repair leaks.  Use water-efficient appliances.",
+                "Be conscious of consumption when cleaning."
+            ]
+        },
+        {
+            "tag": "compost",
+            "patterns": [
+                "What is composting?",
+                "What is compost?"
+            ],
+            "responses": [
+                "Compost is a high-quality fertilizer produced from the decomposition of organic waste by organisms such as bacteria and fungi. Compost serves to fertilize the soil and is a natural form of recycling."
+            ]
+        },
+        {
+            "tag": "how_to_compost_at_home",
+            "patterns": [
+                "How can I compost at home?",
+                "How to compost at home?",
+                "How do I make compost at home?",
+                "How can I make compost at home?"
+            ],
+            "responses": [
+                "You need a closed plastic or wooden containers, you need several layers of organic waste, such as vegetable and fruit peels, coffee grounds, leaf litter and soil, keep it moist, move it every one to three weeks, over time, it will become a natural fertilizer."
+            ]
+        },
+        {
+            "tag": "benefits_of_herb_garden",
+            "patterns": [
+                "What is the purpose of having an herb garden?",
+                "Why have an herb garden?",
+                "What's the benefit of an herb garden?"
+            ],
+            "responses": [
+                "These gardens can serve both decorative and functional purposes, as aromatic plants can be used for cooking, making herbal teas, perfumes, or simply to enjoy their fragrance."
+            ]
+        },
+        {
+            "tag": "What can an aromatic garden be useful",
+            "patterns": [
+                "What can an aromatic garden be useful for?"
+            ],
+            "responses": [
+                "These gardens can be both decorative and functional, since aromatic plants can be used for cooking, infusions, perfumery or simply to enjoy their fragrance."
+            ]
+        },
+        {
+            "tag": "benefits_of_pollinator_garden",
+            "patterns": [
+                "What is the purpose of having a pollinator garden?",
+                "Why have a pollinator garden?",
+                "What's the benefit of a pollinator garden?",
+                "What can a pollinator garden be used for?"
+            ],
+            "responses": [
+                "A pollinator garden is a space designed to attract and support pollinating animals such as insects, birds, and bats. These gardens often include flowering plants that provide nectar and pollen as a food source, as well as shelter and water."
+            ]
+        },
+        {
+            "tag": "native_flora_garden",
+            "patterns": [
+                "What is a native flora garden?",
+                "What is a native flower garden?"
+            ],
+            "responses": [
+                "It consists of growing and preserving plants native to the region. These plants are adapted to the climate and local conditions, which makes them more resistant and less dependent on intensive care. In addition, native flora gardens contribute to the conservation of local biodiversity."
+            ]
+        },
+        {
+            "tag": "benefits_of_native_flora_garden",
+            "patterns": [
+                "What is the benefit of having a native flora garden?",
+                "Why have a native flora garden?",
+                "What's the purpose of a native flora garden?",
+                "Why is it useful to have a native flora garden in our home?"
+            ],
+            "responses": [
+                "It can offer multiple benefits, such as conserving native species, attracting local fauna, reducing water consumption by using plants adapted to the climate, improving soil quality, and creating a natural and aesthetically pleasing environment."
+            ]
+        }
+    ],
+    "error": "I'm sorry, I don't have that information or couldn't understand your question. Please try rephrasing your question or providing feedback."
+}

@@ -19,6 +19,7 @@ try:
     from threading import Thread
     from chatbot import Chatbot
     import pyttsx3
+    from langdetect import detect
 except ModuleNotFoundError:
     print(f"Instalando las independencias.")
     os.system("pip3 install -r requirements.txt")
@@ -30,7 +31,6 @@ except Exception as e:
 
 
 chat_bot = Chatbot()
-
 retroalimentacion = False
 mode = 0
 question = ""
@@ -44,9 +44,6 @@ class Chat(MDWidget):
     def __init__(self, *args, **kwargs):
         super().__init__()
         self.requests = Queue()
-        self.tts = pyttsx3.init()
-        self.tts.setProperty("rate", 150)
-        self.volume = self.tts.getProperty("volume")
 
         def chatter():
 
@@ -54,8 +51,8 @@ class Chat(MDWidget):
                 item = self.requests.get()
                 if item is None:
                     break
-
-                response = chat_bot.chat(item)
+                chat_bot = Chatbot(item[1])
+                response = chat_bot.chat(item[0])
                 self.receive(response)
 
         self.background_thread = Thread(target=chatter)
@@ -68,6 +65,7 @@ class Chat(MDWidget):
     def send(self, text):
         if not text:
             return
+        idioma = detect(text)
         global mode, retroalimentacion, question, responses
         if retroalimentacion:
             print("retroalimentacion en curso, modo: ", mode)
@@ -80,6 +78,7 @@ class Chat(MDWidget):
             elif mode == 3:
                 if text.lower() == "ciita":
                     self.receive("Clave correcta, realizando retroalimentación.")
+                    chat_bot = Chatbot(idioma)
                     chat_bot.retroalimentacion(question, responses)
                     self.receive("Retroalimentación lista, reiniciando a Ruby en 5 segundos.")
                     time.sleep(5)
@@ -99,12 +98,12 @@ class Chat(MDWidget):
             Animation.cancel_all(rv, "scroll_y")
             Animation(scroll_y=0, t="out_quad", d=0.5).start(rv)
 
-        self.requests.put(text)
+        self.requests.put([text, idioma])
 
     def receive(self, text):
         if text == "Lo siento, no cuento con dicha informacion o no pude entender bien su pregunta. Intenta reformular tu pregunta o realizar una retroalimentacion.":
             print("fallo encontrado, texto: ", text)
-            global retroalimentacion, mode, key
+            global retroalimentacion, mode
             if not retroalimentacion:
                 print('retroalimentando')
                 retroalimentacion = True
@@ -131,10 +130,21 @@ class Chat(MDWidget):
                 audio = recognizer.listen(source, timeout=15)
             try:
                 text = recognizer.recognize_google(audio, language="es")
+                idioma = detect(text)
+                tts = pyttsx3.init()
+                tts.setProperty("rate", 150)
+                tts.getProperty("volume")
+                chat_bot = Chatbot(idioma)
+                if idioma != "es":
+                    voices = tts.getProperty('voices')
+                    for voice in voices:
+                        if 'en' in voice.id:
+                            tts.setProperty('voice', voice.id)
+                            break
                 response = chat_bot.chat(text)
                 self.receive(response)
-                self.tts.say(response)
-                self.tts.runAndWait()
+                tts.say(response)
+                tts.runAndWait()
                 self.receive("Espero que mi respuesta te sea de mucha ayuda")
             except sr.RequestError as e:
                 self.receive(f"Error en la solicitud a la API de Google Speech Recognition: {e}")
